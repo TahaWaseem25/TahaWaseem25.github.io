@@ -34,16 +34,17 @@
 
     .about { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 50px; }
     .about p { font-size: 1.05em; }
-
-    .projects {
+.projects {
   display: grid;
-  grid-template-columns: 1fr; /* Only one column per row */
-  gap: 20px; /* Space between cards */
+  grid-template-columns: 1fr; /* One card per row */
+  gap: 20px;
+  width: 100%; /* Take full width */
 }
 
 .project {
+  width: 100%; /* Stretch to full width of container */
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -52,8 +53,6 @@
 .project:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-}
-    .projects { display: flex; flex-direction: column; gap: 20px; }
   
     .project h3 { color: #3b82f6; margin-bottom: 12px; font-size: 1.4em; }
     .project p { margin-bottom: 15px; font-size: 1em; color: #475569; }
