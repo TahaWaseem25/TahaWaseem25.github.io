@@ -128,7 +128,7 @@
       border-radius: 3px;
     }
     h2 {
-      font-size: 2.5em;
+      font-size: 2.2em;
       font-weight: 700;
       color: var(--primary);
       text-align: center;
@@ -155,15 +155,17 @@
       box-shadow: 0 8px 25px var(--glow);
     }
     .project::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, var(--neon), transparent);
-      transition: width 0.3s;
-      opacity: 0.3;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon), transparent);
+  transition: width 0.3s;
+  opacity: 0.3;
+  pointer-events: none;
+}
     }
     .project:hover::before { width: 100%; }
     .project i {
@@ -186,14 +188,17 @@
       margin-bottom: 15px;
     }
     .project a {
-      color: var(--primary);
-      font-weight: 600;
-      text-decoration: none;
-      border: 2px solid var(--neon);
-      padding: 10px 20px;
-      border-radius: 50px;
-      transition: background 0.3s, color 0.3s;
-    }
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--neon);
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
     .project a:hover {
       background: var(--neon);
       color: var(--primary);
@@ -251,22 +256,22 @@
     <h2>Projects</h2>
     <div class="projects">
       <div class="project">
-        <h3><i class="fas fa-plane"></i> PIA Fleet and Operational Optimisation</h3>
+        <h3>PIA Fleet and Operational Optimisation</h3>
         <p>Analysed and designed a data-driven recovery plan for PIA (2022–2025), integrating fleet, maintenance, and financial data into SQL/Tableau dashboards to support privatisation.</p>
         <p><a href="https://github.com/TahaWaseem25/PIA-Fleet-And-Operational-Optimisation-Turnaround-Program" target="_blank">View Repo →</a></p>
       </div>
       <div class="project">
-        <h3><i class="fas fa-truck"></i> UrbanWest Logistics Optimization</h3>
+        <h3>UrbanWest Logistics Optimization</h3>
         <p>Built a retail supply chain model for a simulated furniture company. Integrated procurement, inventory, and sales data into SQL/Tableau dashboards to track stock and supplier efficiency.</p>
         <p><a href="https://github.com/TahaWaseem25/UrbanWest-Supply-Chain-Project" target="_blank">View Repo →</a></p>
       </div>
       <div class="project">
-        <h3><i class="fas fa-gamepad"></i> BetStar KYC Optimization</h3>
+        <h3> BetStar KYC Optimization</h3>
         <p>Optimised iGaming onboarding for BetStar, reducing drop-offs from 20% to 10% using SQL, BPMN, Excel, and Tableau dashboards to streamline KYC and payment processes.</p>
         <p><a href="https://github.com/TahaWaseem25/KYC-Customer-Onboarding-Optimisation-Project-or-BetStar" target="_blank">View Repo →</a></p>
       </div>
       <div class="project">
-        <h3><i class="fas fa-futbol"></i> Football Performance Analysis</h3>
+        <h3>< Football Performance Analysis</h3>
         <p>Developed a Tableau dashboard for 2,690 players across top 5 European leagues (2022–2023), using SQL and Excel to visualise performance metrics and team strategies.</p>
         <p><a href="https://github.com/TahaWaseem25/2022-2023-Player-Dashboard-Analysis-Project" target="_blank">View Repo →</a></p>
       </div>
