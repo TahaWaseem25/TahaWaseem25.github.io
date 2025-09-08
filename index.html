@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,13 +6,14 @@
   <meta name="description" content="Taha's portfolio showcasing data-driven projects for tech and iGaming roles in Sydney and Malta.">
   <title>Taha's Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
       --primary: #1e3a8a;
       --accent: #06b6d4;
       --neon: #22d3ee;
       --bg-dark: #020617;
+      --bg-light: #ffffff;
       --card-alt: #e6f3fa;
       --glow: rgba(34, 211, 238, 0.7);
     }
@@ -25,6 +25,23 @@
       line-height: 1.6;
       scroll-behavior: smooth;
     }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(2,6,23,0.85);
+      backdrop-filter: blur(10px);
+      padding: 15px 20px;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 600;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    nav a:hover { color: var(--neon); text-shadow: 0 0 10px var(--glow); }
     header {
       background: var(--bg-dark);
       color: white;
@@ -32,10 +49,10 @@
       padding: 150px 20px;
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      overflow: hidden;
     }
     #particles-js {
       position: absolute;
@@ -45,61 +62,73 @@
       height: 100%;
       z-index: 0;
     }
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(34,211,238,0.2), transparent);
+      z-index: 0;
+    }
     header h1, header p, header a { position: relative; z-index: 1; }
     header h1 {
-      font-size: 4em;
+      font-size: 4.5em;
       font-weight: 700;
       margin-bottom: 20px;
-      text-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      text-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     header p {
-      font-size: 1.5em;
+      font-size: 1.6em;
       max-width: 600px;
       margin: 0 auto 30px;
       font-weight: 400;
     }
     header a {
       display: inline-block;
-      padding: 12px 30px;
-      background: var(--accent);
-      color: white;
+      padding: 14px 35px;
+      background: var(--neon);
+      color: var(--primary);
       font-weight: 700;
       text-decoration: none;
       border-radius: 50px;
-      box-shadow: 0 0 15px var(--glow);
+      box-shadow: 0 0 20px var(--glow);
       transition: transform 0.3s, box-shadow 0.3s;
       animation: bounce 2s infinite;
     }
     header a:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 25px var(--glow);
+      box-shadow: 0 0 30px var(--glow);
     }
-   @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     section {
-      max-width: 800px;
+      max-width: 1100px;
       margin: 60px auto;
       padding: 0 20px;
     }
     .about {
       text-align: center;
-      position: relative;
-      margin-bottom: 80px;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
     }
     .about::after {
       content: '';
       display: block;
-      width: 120px;
+      width: 150px;
       height: 5px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+      background: linear-gradient(90deg, var(--neon), var(--primary));
       margin: 20px auto;
       border-radius: 3px;
     }
     h2 {
-      font-size: 2.3em;
+      font-size: 2.5em;
       font-weight: 700;
       color: var(--primary);
       text-align: center;
@@ -109,10 +138,11 @@
       display: flex;
       flex-direction: column;
       gap: 30px;
+      max-width: 1100px;
     }
     .project {
-      background: var(--card-bg);
-      padding: 60px;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
       border-radius: 16px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
@@ -122,7 +152,7 @@
     .project:nth-child(even) { background: var(--card-alt); }
     .project:hover {
       transform: translateY(-8px);
-      box-shadow: 0 8px 20px var(--glow);
+      box-shadow: 0 8px 25px var(--glow);
     }
     .project::before {
       content: '';
@@ -130,16 +160,25 @@
       top: 0;
       left: 0;
       width: 0;
-      height: 4px;
-      background: var(--accent);
+      height: 100%;
+      background: linear-gradient(90deg, var(--neon), transparent);
       transition: width 0.3s;
+      opacity: 0.3;
     }
     .project:hover::before { width: 100%; }
+    .project i {
+      font-size: 1.5em;
+      color: var(--neon);
+      margin-right: 10px;
+      vertical-align: middle;
+    }
     .project h3 {
       font-size: 1.8em;
       color: var(--primary);
       margin-bottom: 12px;
       font-weight: 700;
+      display: inline-flex;
+      align-items: center;
     }
     .project p {
       font-size: 1.1em;
@@ -150,75 +189,84 @@
       color: var(--primary);
       font-weight: 600;
       text-decoration: none;
-      border: 2px solid var(--accent);
+      border: 2px solid var(--neon);
       padding: 10px 20px;
       border-radius: 50px;
       transition: background 0.3s, color 0.3s;
     }
     .project a:hover {
-      background: var(--accent);
-      color: white;
+      background: var(--neon);
+      color: var(--primary);
     }
     footer {
       text-align: center;
-      padding: 30px 20px;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(12px);
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(15px);
       font-size: 1em;
       color: #334155;
       border-top: 1px solid rgba(0,0,0,0.1);
     }
     footer a {
-      color: var(--accent);
+      color: var(--neon);
       text-decoration: none;
-      margin: 0 12px;
+      margin: 0 15px;
       transition: text-shadow 0.3s;
     }
     footer a:hover {
-      text-shadow: 0 0 10px var(--glow);
+      text-shadow: 0 0 12px var(--glow);
     }
     @media (max-width: 600px) {
-      header h1 { font-size: 2.8em; }
-      header p { font-size: 1.3em; }
+      header h1 { font-size: 3em; }
+      header p { font-size: 1.4em; }
       .project { padding: 20px; }
-      h2 { font-size: 1.8em; }
+      h2 { font-size: 2em; }
+      nav a { margin: 0 10px; font-size: 0.9em; }
+      section, .projects { max-width: 100%; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+  </nav>
+
+  <header id="home">
     <div id="particles-js"></div>
     <h1>Taha</h1>
-    <p><strong>Transforming data into insights</strong> — SQL, Tableau, AWS & BPMN projects</p>
+    <p><strong><span id="typed"></span></strong> — SQL, Tableau, AWS & BPMN projects</p>
     <a href="#projects">See Projects ↓</a>
   </header>
 
-  <section class="about" data-aos="fade-up">
+  <section class="about" id="about">
     <h2>About Me</h2>
     <p>I work on business and data analysis projects, building insights through practical applications and real datasets. My projects showcase SQL, Tableau, and BPMN skills. Currently, I'm building a serverless AWS analytics dashboard.</p>
   </section>
 
-  <section id="projects" data-aos="fade-up">
+  <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
-      <div class="project" data-aos="slide-up" data-aos-delay="100">
-        <h3>PIA Fleet and Operational Optimisation</h3>
+      <div class="project">
+        <h3><i class="fas fa-plane"></i> PIA Fleet and Operational Optimisation</h3>
         <p>Analysed and designed a data-driven recovery plan for PIA (2022–2025), integrating fleet, maintenance, and financial data into SQL/Tableau dashboards to support privatisation.</p>
         <p><a href="https://github.com/TahaWaseem25/PIA-Fleet-And-Operational-Optimisation-Turnaround-Program" target="_blank">View Repo →</a></p>
       </div>
-      <div class="project" data-aos="slide-up" data-aos-delay="200">
-        <h3>UrbanWest Logistics Optimization</h3>
+      <div class="project">
+        <h3><i class="fas fa-truck"></i> UrbanWest Logistics Optimization</h3>
         <p>Built a retail supply chain model for a simulated furniture company. Integrated procurement, inventory, and sales data into SQL/Tableau dashboards to track stock and supplier efficiency.</p>
         <p><a href="https://github.com/TahaWaseem25/UrbanWest-Supply-Chain-Project" target="_blank">View Repo →</a></p>
       </div>
-      <div class="project" data-aos="slide-up" data-aos-delay="300">
-        <h3>BetStar KYC Optimization</h3>
+      <div class="project">
+        <h3><i class="fas fa-gamepad"></i> BetStar KYC Optimization</h3>
         <p>Optimised iGaming onboarding for BetStar, reducing drop-offs from 20% to 10% using SQL, BPMN, Excel, and Tableau dashboards to streamline KYC and payment processes.</p>
         <p><a href="https://github.com/TahaWaseem25/KYC-Customer-Onboarding-Optimisation-Project-or-BetStar" target="_blank">View Repo →</a></p>
       </div>
-      <div class="project" data-aos="slide-up" data-aos-delay="400">
-        <h3>Football Performance Analysis</h3>
+      <div class="project">
+        <h3><i class="fas fa-futbol"></i> Football Performance Analysis</h3>
         <p>Developed a Tableau dashboard for 2,690 players across top 5 European leagues (2022–2023), using SQL and Excel to visualise performance metrics and team strategies.</p>
         <p><a href="https://github.com/TahaWaseem25/2022-2023-Player-Dashboard-Analysis-Project" target="_blank">View Repo →</a></p>
       </div>
@@ -231,20 +279,23 @@
     <a href="https://github.com/TahaWaseem25" target="_blank">GitHub</a>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000 });
     particlesJS('particles-js', {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { value: 40, density: { enable: true, value_area: 1000 } },
         color: { value: '#ffffff' },
         shape: { type: 'circle' },
-        opacity: { value: 0.5, random: true },
-        size: { value: 3, random: true },
+        opacity: { value: 0.3, random: true },
+        size: { value: 2, random: true },
         line_linked: { enable: false },
-        move: { speed: 1, direction: 'none', random: true }
+        move: { speed: 0.5, direction: 'none', random: true }
       },
       interactivity: { events: { onhover: { enable: false } } }
+    });
+    new Typed('#typed', {
+      strings: ['Transforming data into insights'],
+      typeSpeed: 50,
+      showCursor: false
     });
   </script>
 </body>
